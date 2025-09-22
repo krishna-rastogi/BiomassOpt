@@ -65,14 +65,69 @@
 
         <section class="model-placeholder">
             <div class="container">
-                <h2>Model Results Will Be Displayed Here</h2>
-                <p>This section will contain your ML model results, visualizations, and interactive dashboards for Model 1.</p>
+                <h2>Enter Model 1 Parameters</h2>
+                <p>Please provide the required inputs for the supply chain analysis model.</p>
                 <div class="placeholder-box">
-                    <div class="placeholder-content">
-                        <div class="placeholder-icon">📈</div>
-                        <h3>Interactive Dashboard</h3>
-                        <p>Real-time supply chain analytics and optimization results</p>
-                    </div>
+                    <form class="model-form" id="model1-form" action="#" method="post" novalidate>
+                        <div class="form-grid">
+                            <div class="form-group">
+                                <label for="originLat">Origin_Lat</label>
+                                <input type="number" id="originLat" name="originLat" placeholder="e.g., 19.0760" step="0.000001" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="originLon">Origin_Lon</label>
+                                <input type="number" id="originLon" name="originLon" placeholder="e.g., 72.8777" step="0.000001" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="destLat">Dest_Lat</label>
+                                <input type="number" id="destLat" name="destLat" placeholder="e.g., 28.7041" step="0.000001" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="destLon">Dest_Lon</label>
+                                <input type="number" id="destLon" name="destLon" placeholder="e.g., 77.1025" step="0.000001" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="distanceKm">Distance_km</label>
+                                <input type="number" id="distanceKm" name="distanceKm" placeholder="e.g., 1420" step="0.01" min="0" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="fuelPrice">Fuel_Price_per_unit_INR</label>
+                                <input type="number" id="fuelPrice" name="fuelPrice" placeholder="e.g., 96.5" step="0.01" min="0" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="fuelConsumption">Fuel_Consumption_per_100km</label>
+                                <input type="number" id="fuelConsumption" name="fuelConsumption" placeholder="e.g., 28" step="0.01" min="0" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="fuelCost">Fuel_Cost_INR</label>
+                                <input type="number" id="fuelCost" name="fuelCost" placeholder="e.g., 38500" step="0.01" min="0" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="otherCosts">Other_Costs_INR</label>
+                                <input type="number" id="otherCosts" name="otherCosts" placeholder="e.g., 5000" step="0.01" min="0" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="handlingFee">Handling_Fee_INR</label>
+                                <input type="number" id="handlingFee" name="handlingFee" placeholder="e.g., 2000" step="0.01" min="0" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="totalPrice">Total_Price_INR</label>
+                                <input type="number" id="totalPrice" name="totalPrice" placeholder="e.g., 45500" step="0.01" min="0" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="vehicleType">Vehicle_Type_encoded</label>
+                                <input type="number" id="vehicleType" name="vehicleType" placeholder="e.g., 1" step="1" min="0" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="fuelType">Fuel_Type_encoded</label>
+                                <input type="number" id="fuelType" name="fuelType" placeholder="e.g., 0" step="1" min="0" required>
+                            </div>
+                        </div>
+                        <div class="form-actions">
+                            <button type="submit" class="btn btn-primary">Run Model</button>
+                            <button type="reset" class="btn btn-secondary">Clear</button>
+                        </div>
+                    </form>
                 </div>
             </div>
         </section>
