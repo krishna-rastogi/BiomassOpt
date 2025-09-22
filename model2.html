@@ -65,14 +65,77 @@
 
         <section class="model-placeholder">
             <div class="container">
-                <h2>Model Results Will Be Displayed Here</h2>
-                <p>This section will contain your ML model results, visualizations, and interactive dashboards for Model 2.</p>
+                <h2>Enter Model 2 Parameters</h2>
+                <p>Please provide the required inputs for the resource utilization model.</p>
                 <div class="placeholder-box">
-                    <div class="placeholder-content">
-                        <div class="placeholder-icon">⚡</div>
-                        <h3>Utilization Dashboard</h3>
-                        <p>Real-time resource utilization analytics and optimization recommendations</p>
-                    </div>
+                    <form class="model-form" id="model2-form" action="#" method="post" novalidate>
+                        <div class="form-grid">
+                            <div class="form-group">
+                                <label for="state">State</label>
+                                <input type="text" id="state" name="state" placeholder="e.g., Maharashtra" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="feedstock">Feedstock</label>
+                                <input type="text" id="feedstock" name="feedstock" placeholder="e.g., Rice Husk" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="season">Season</label>
+                                <input type="text" id="season" name="season" placeholder="e.g., Kharif" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="availableBiomass">Available Biomass (tonnes)</label>
+                                <input type="number" id="availableBiomass" name="availableBiomass" placeholder="e.g., 1500" step="0.01" min="0" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="moisture">Moisture (%)</label>
+                                <input type="number" id="moisture" name="moisture" placeholder="e.g., 10" step="0.01" min="0" max="100" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="volatiles">Volatiles (%)</label>
+                                <input type="number" id="volatiles" name="volatiles" placeholder="e.g., 70" step="0.01" min="0" max="100" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="fixedCarbon">Fixed carbon (%)</label>
+                                <input type="number" id="fixedCarbon" name="fixedCarbon" placeholder="e.g., 15" step="0.01" min="0" max="100" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="ash">Ash (%)</label>
+                                <input type="number" id="ash" name="ash" placeholder="e.g., 5" step="0.01" min="0" max="100" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="c">C (%)</label>
+                                <input type="number" id="c" name="c" placeholder="e.g., 45" step="0.01" min="0" max="100" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="h">H (%)</label>
+                                <input type="number" id="h" name="h" placeholder="e.g., 6" step="0.01" min="0" max="100" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="n">N (%)</label>
+                                <input type="number" id="n" name="n" placeholder="e.g., 1.2" step="0.01" min="0" max="100" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="o">O (%)</label>
+                                <input type="number" id="o" name="o" placeholder="e.g., 42" step="0.01" min="0" max="100" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="s">S (%)</label>
+                                <input type="number" id="s" name="s" placeholder="e.g., 0.3" step="0.01" min="0" max="100" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="hhv">HHV (MJ/kg)</label>
+                                <input type="number" id="hhv" name="hhv" placeholder="e.g., 18.5" step="0.01" min="0" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="bulkDensity">Bulk Density (kg/m^3)</label>
+                                <input type="number" id="bulkDensity" name="bulkDensity" placeholder="e.g., 180" step="0.01" min="0" required>
+                            </div>
+                        </div>
+                        <div class="form-actions">
+                            <button type="submit" class="btn btn-primary">Run Model</button>
+                            <button type="reset" class="btn btn-secondary">Clear</button>
+                        </div>
+                    </form>
                 </div>
             </div>
         </section>
