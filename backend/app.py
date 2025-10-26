@@ -27,6 +27,34 @@ reg_model = load_model(REGRESSOR_PATH, compile=False)
 preprocessor = joblib.load(PREPROCESSOR_PATH)
 label_encoder = joblib.load(LABEL_ENCODER_PATH)
 
+
+# ---------------- Model3 Setup ---------------- #
+# Go up one level from backend, then enter data folder
+DISTRICTS_PATH = os.path.abspath(os.path.join(BASE_DIR, '..', 'data', 'districts_bounding_boxes.csv'))
+
+# Load CSV
+df_districts = pd.read_csv(DISTRICTS_PATH)
+df_districts['center_lat'] = (df_districts['min_lat'] + df_districts['max_lat']) / 2
+df_districts['center_lon'] = (df_districts['min_lon'] + df_districts['max_lon']) / 2
+
+
+def calculate_distance_to_districts(lat, lon, df):
+    distances = []
+    for _, row in df.iterrows():
+        district_lat = row['center_lat']
+        district_lon = row['center_lon']
+        distance = np.sqrt((lat - district_lat)**2 + (lon - district_lon)**2)
+        distances.append(distance)
+    return distances
+
+def find_closest_district(lon, lat, df):
+    if df.empty:
+        return "No districts found", "No districts found"
+    distances = calculate_distance_to_districts(lat, lon, df)
+    min_distance_index = distances.index(min(distances))
+    closest_row = df.iloc[min_distance_index]
+    return closest_row['state'], closest_row['district']
+
 # ---------------- Routes ---------------- #
 
 @app.route('/')
@@ -61,6 +89,29 @@ def predict_model2():
     except Exception as e:
         return jsonify({'error': str(e)})
 
+
+# ---------------- Model3 Routes ---------------- #
+
+@app.route('/model3')
+def model3_page():
+    return render_template('model3.html')
+
+@app.route('/predict_nearest_city', methods=['POST'])
+def predict_nearest_city():
+    try:
+        data = request.get_json()
+        lon = float(data.get('longitude'))
+        lat = float(data.get('latitude'))
+
+        state, district = find_closest_district(lon, lat, df_districts)
+
+        return jsonify({
+            'state': state,
+            'district': district
+        })
+    except Exception as e:
+        return jsonify({'error': str(e)})
+    
 # ----------------------------------------- #
 
 if __name__ == '__main__':
