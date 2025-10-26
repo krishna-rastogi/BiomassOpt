@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Model 1 - Biomass Supply Chain Analysis</title>
-    <!-- <link rel="stylesheet" href="/frontend/static/styles.css"> -->
     <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 </head>
@@ -23,6 +22,9 @@
                 </li>
                 <li class="nav-item">
                     <a href="{{ url_for('model2_page') }}" class="nav-link">Model2</a>
+                </li>
+                <li class="nav-item">
+                    <a href="{{ url_for('model3_page') }}" class="nav-link">Model3</a>
                 </li>
             </ul>
             <div class="hamburger">
@@ -140,7 +142,6 @@
         </div>
     </footer>
 
-    <!-- <script src="script.js"></script> -->
     <script src="{{ url_for('static', filename='script.js') }}"></script>
      
     <script>

@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nearest City Predictor - Biomass Transport</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <h2>🌱 BiomassOpt</h2>
+            </div>
+            <ul class="nav-menu">
+                <li class="nav-item">
+                    <a href="{{ url_for('home') }}" class="nav-link">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a href="{{ url_for('model1_page') }}" class="nav-link">Model1</a>
+                </li>
+                <li class="nav-item">
+                    <a href="{{ url_for('model2_page') }}" class="nav-link">Model2</a>
+                </li>
+                <li class="nav-item">
+                    <a href="{{ url_for('model3_page') }}" class="nav-link active">Model3</a>
+                </li>
+            </ul>
+            <div class="hamburger">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </div>
+    </nav>
+
+    <main>
+        <section class="page-hero">
+            <div class="container">
+                <h1 class="page-title">Nearest Hub</h1>
+                <p class="page-subtitle">Enter your location coordinates to find the nearest city suitable for biomass transport and logistics.</p>
+            </div>
+        </section>
+
+        <section class="model-content">
+            <div class="container">
+                <div class="content-grid">
+                    <div class="content-card">
+                        <h3>🚛 Optimize Transport</h3>
+                        <p>Identify the closest urban center to minimize transportation time and costs for your biomass products.</p>
+                    </div>
+                    <div class="content-card">
+                        <h3>📍 Location-Based Insights</h3>
+                        <p>Our model analyzes geographic coordinates and returns the nearest city with available logistics infrastructure.</p>
+                    </div>
+                    <div class="content-card">
+                        <h3>💡 Efficient Planning</h3>
+                        <p>Make data-driven decisions for biomass collection, storage, and distribution based on proximity to cities.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="model-placeholder">
+            <div class="container">
+                <h2>Enter Location Coordinates</h2>
+                <p>Provide the Latitude and Longitude of your biomass origin point.</p>
+                <div class="placeholder-box">
+                    <form class="model-form" id="nearest-city-form" action="#" method="post" novalidate>
+                        <div class="form-group">
+                            <label for="latitude">Latitude</label>
+                            <input type="number" id="latitude" name="latitude" placeholder="e.g., 19.0760" step="0.000001" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="longitude">Longitude</label>
+                            <input type="number" id="longitude" name="longitude" placeholder="e.g., 72.8777" step="0.000001" required>
+                        </div>
+                        <div class="form-actions">
+                            <button type="submit" class="btn btn-primary">Find Nearest City</button>
+                            <button type="reset" class="btn btn-secondary">Clear</button>
+                        </div>
+                    </form>
+                    <div id="output-container"></div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2025 Biomass Supply Chain Optimization. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+     
+    <script>
+        document.getElementById("nearest-city-form").addEventListener("submit", async function(e) {
+            e.preventDefault();
+            const formData = new FormData(e.target);
+            const data = Object.fromEntries(formData.entries());
+            data.latitude = parseFloat(data.latitude);
+            data.longitude = parseFloat(data.longitude);
+
+            const res = await fetch("/predict_nearest_city", {
+                method: "POST",
+                headers: {"Content-Type": "application/json"},
+                body: JSON.stringify(data)
+            });
+
+            const result = await res.json();
+            const outputContainer = document.getElementById("output-container");
+            outputContainer.innerHTML = result.district
+                ? `<h3>Nearest City: ${result.district} (${result.state})</h3>`
+                : `<p style="color:red;">Error: ${result.error}</p>`;
+
+        });
+    </script>
+</body>
+</html>

@@ -24,6 +24,9 @@
                 <li class="nav-item">
                     <a href="{{ url_for('model2_page') }}" class="nav-link">Model2</a>
                 </li>
+                <li class="nav-item">
+                    <a href="{{ url_for('model3_page') }}" class="nav-link">Model3</a>
+                </li>
             </ul>
             <div class="hamburger">
                 <span class="bar"></span>
@@ -41,7 +44,8 @@
                     <p class="hero-subtitle">Harnessing the power of machine learning to optimize biomass utilization and create sustainable supply chains for a greener future.</p>
                     <div class="hero-buttons">
                         <a href="{{ url_for('model1_page') }}" class="btn btn-primary">Explore Model 1</a>
-                        <a href="{{ url_for('model2_page') }}" class="btn btn-secondary">Explore Model 2</a>
+                        <a href="{{ url_for('model2_page') }}" class="btn btn-primary">Explore Model 2</a>
+                        <a href="{{ url_for('model3_page') }}" class="btn btn-primary">Explore Model 3</a>
                     </div>
                 </div>
                 <div class="hero-image">
@@ -96,6 +100,11 @@
                         <h3>Model 2: Turning Waste to Wealth</h3>
                         <p>Intelligent models predict optimal biomass utilization strategies, maximizing energy output while minimizing waste and environmental impact.</p>
                         <a href="{{ url_for('model2_page') }}" class="feature-link">Learn More →</a>
+                    </div>
+                    <div class="feature-card">
+                        <h3>Model 3: Nearest City Predictor</h3>
+                        <p>Enter geographic coordinates to find the nearest city suitable for biomass transport and logistics planning.</p>
+                        <a href="{{ url_for('model3_page') }}" class="feature-link">Learn More →</a>
                     </div>
                 </div>
             </div>
