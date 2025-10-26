@@ -4,7 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Biomass Supply Chain Optimization</title>
-    <link rel="stylesheet" href="styles.css">
+    <!-- <link rel="stylesheet" href="/frontend/static/styles.css"> -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
@@ -15,13 +16,13 @@
             </div>
             <ul class="nav-menu">
                 <li class="nav-item">
-                    <a href="index.html" class="nav-link active">Home</a>
+                    <a href="{{ url_for('home') }}" class="nav-link active">Home</a>
                 </li>
                 <li class="nav-item">
-                    <a href="model1.html" class="nav-link">Model1</a>
+                    <a href="{{ url_for('model1_page') }}" class="nav-link">Model1</a>
                 </li>
                 <li class="nav-item">
-                    <a href="model2.html" class="nav-link">Model2</a>
+                    <a href="{{ url_for('model2_page') }}" class="nav-link">Model2</a>
                 </li>
             </ul>
             <div class="hamburger">
@@ -39,8 +40,8 @@
                     <h1 class="hero-title">Biomass Supply Chain Optimization</h1>
                     <p class="hero-subtitle">Harnessing the power of machine learning to optimize biomass utilization and create sustainable supply chains for a greener future.</p>
                     <div class="hero-buttons">
-                        <a href="model1.html" class="btn btn-primary">Explore Model 1</a>
-                        <a href="model2.html" class="btn btn-secondary">Explore Model 2</a>
+                        <a href="{{ url_for('model1_page') }}" class="btn btn-primary">Explore Model 1</a>
+                        <a href="{{ url_for('model2_page') }}" class="btn btn-secondary">Explore Model 2</a>
                     </div>
                 </div>
                 <div class="hero-image">
@@ -89,12 +90,12 @@
                     <div class="feature-card">
                         <h3>Model 1: Supply Chain Analysis</h3>
                         <p>Advanced machine learning algorithms analyze biomass collection patterns, transportation routes, and processing efficiency to optimize the entire supply chain.</p>
-                        <a href="model1.html" class="feature-link">Learn More →</a>
+                        <a href="{{ url_for('model1_page') }}" class="feature-link">Learn More →</a>
                     </div>
                     <div class="feature-card">
                         <h3>Model 2: Turning Waste to Wealth</h3>
                         <p>Intelligent models predict optimal biomass utilization strategies, maximizing energy output while minimizing waste and environmental impact.</p>
-                        <a href="model2.html" class="feature-link">Learn More →</a>
+                        <a href="{{ url_for('model2_page') }}" class="feature-link">Learn More →</a>
                     </div>
                 </div>
             </div>
@@ -107,6 +108,7 @@
         </div>
     </footer>
 
-    <script src="script.js"></script>
+    <!-- <script src="script.js"></script> -->
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
 </body>
 </html>

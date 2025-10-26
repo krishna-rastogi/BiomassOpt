@@ -4,7 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Model 2 - Biomass Resource Utilization</title>
-    <link rel="stylesheet" href="styles.css">
+    <!-- <link rel="stylesheet" href="/frontend/static/styles.css"> -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
@@ -15,13 +16,13 @@
             </div>
             <ul class="nav-menu">
                 <li class="nav-item">
-                    <a href="index.html" class="nav-link">Home</a>
+                    <a href="{{ url_for('home') }}" class="nav-link">Home</a>
                 </li>
                 <li class="nav-item">
-                    <a href="model1.html" class="nav-link">Model1</a>
+                    <a href="{{ url_for('model1_page') }}" class="nav-link">Model1</a>
                 </li>
                 <li class="nav-item">
-                    <a href="model2.html" class="nav-link active">Model2</a>
+                    <a href="{{ url_for('model2_page') }}" class="nav-link active">Model2</a>
                 </li>
             </ul>
             <div class="hamburger">
@@ -72,63 +73,63 @@
                         <div class="form-grid">
                             <div class="form-group">
                                 <label for="state">State</label>
-                                <input type="text" id="state" name="state" placeholder="e.g., Maharashtra" required>
+                                <input type="text" id="state" name="State" placeholder="e.g., Maharashtra" required>
                             </div>
                             <div class="form-group">
                                 <label for="feedstock">Feedstock</label>
-                                <input type="text" id="feedstock" name="feedstock" placeholder="e.g., Rice Husk" required>
+                                <input type="text" id="feedstock" name="Feedstock" placeholder="e.g., Rice Husk" required>
                             </div>
                             <div class="form-group">
                                 <label for="season">Season</label>
-                                <input type="text" id="season" name="season" placeholder="e.g., Kharif" required>
+                                <input type="text" id="season" name="Season" placeholder="e.g., Kharif" required>
                             </div>
                             <div class="form-group">
                                 <label for="availableBiomass">Available Biomass (tonnes)</label>
-                                <input type="number" id="availableBiomass" name="availableBiomass" placeholder="e.g., 1500" step="0.01" min="0" required>
+                                <input type="number" id="availableBiomass" name="Available Biomass (tonnes)" placeholder="e.g., 1500" step="0.01" min="0" required>
                             </div>
                             <div class="form-group">
                                 <label for="moisture">Moisture (%)</label>
-                                <input type="number" id="moisture" name="moisture" placeholder="e.g., 10" step="0.01" min="0" max="100" required>
+                                <input type="number" id="moisture" name="Moisture (%)" placeholder="e.g., 10" step="0.01" min="0" max="100" required>
                             </div>
                             <div class="form-group">
                                 <label for="volatiles">Volatiles (%)</label>
-                                <input type="number" id="volatiles" name="volatiles" placeholder="e.g., 70" step="0.01" min="0" max="100" required>
+                                <input type="number" id="volatiles" name="Volatiles (%)" placeholder="e.g., 70" step="0.01" min="0" max="100" required>
                             </div>
                             <div class="form-group">
                                 <label for="fixedCarbon">Fixed carbon (%)</label>
-                                <input type="number" id="fixedCarbon" name="fixedCarbon" placeholder="e.g., 15" step="0.01" min="0" max="100" required>
+                                <input type="number" id="fixedCarbon" name="Fixed C (%)" placeholder="e.g., 15" step="0.01" min="0" max="100" required>
                             </div>
                             <div class="form-group">
                                 <label for="ash">Ash (%)</label>
-                                <input type="number" id="ash" name="ash" placeholder="e.g., 5" step="0.01" min="0" max="100" required>
+                                <input type="number" id="ash" name="Ash (%)" placeholder="e.g., 5" step="0.01" min="0" max="100" required>
                             </div>
                             <div class="form-group">
                                 <label for="c">C (%)</label>
-                                <input type="number" id="c" name="c" placeholder="e.g., 45" step="0.01" min="0" max="100" required>
+                                <input type="number" id="c" name="C (%)" placeholder="e.g., 45" step="0.01" min="0" max="100" required>
                             </div>
                             <div class="form-group">
                                 <label for="h">H (%)</label>
-                                <input type="number" id="h" name="h" placeholder="e.g., 6" step="0.01" min="0" max="100" required>
+                                <input type="number" id="h" name="H (%)" placeholder="e.g., 6" step="0.01" min="0" max="100" required>
                             </div>
                             <div class="form-group">
                                 <label for="n">N (%)</label>
-                                <input type="number" id="n" name="n" placeholder="e.g., 1.2" step="0.01" min="0" max="100" required>
+                                <input type="number" id="n" name="N (%)" placeholder="e.g., 1.2" step="0.01" min="0" max="100" required>
                             </div>
                             <div class="form-group">
                                 <label for="o">O (%)</label>
-                                <input type="number" id="o" name="o" placeholder="e.g., 42" step="0.01" min="0" max="100" required>
+                                <input type="number" id="o" name="O (%)" placeholder="e.g., 42" step="0.01" min="0" max="100" required>
                             </div>
                             <div class="form-group">
                                 <label for="s">S (%)</label>
-                                <input type="number" id="s" name="s" placeholder="e.g., 0.3" step="0.01" min="0" max="100" required>
+                                <input type="number" id="s" name="S (%)" placeholder="e.g., 0.3" step="0.01" min="0" max="100" required>
                             </div>
-                            <div class="form-group">
+                            <!-- <div class="form-group">
                                 <label for="hhv">HHV (MJ/kg)</label>
                                 <input type="number" id="hhv" name="hhv" placeholder="e.g., 18.5" step="0.01" min="0" required>
-                            </div>
+                            </div> -->
                             <div class="form-group">
                                 <label for="bulkDensity">Bulk Density (kg/m^3)</label>
-                                <input type="number" id="bulkDensity" name="bulkDensity" placeholder="e.g., 180" step="0.01" min="0" required>
+                                <input type="number" id="bulkDensity" name="Bulk Density (kg/m3)" placeholder="e.g., 180" step="0.01" min="0" required>
                             </div>
                         </div>
                         <div class="form-actions">
@@ -147,7 +148,57 @@
         </div>
     </footer>
 
-    <script src="script.js"></script>
+    <!-- <script src="script.js"></script> -->
+    <script src="{{ url_for('static', filename='script.js') }}"></script> 
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+        const form = document.getElementById("model2-form");
+
+        form.addEventListener("submit", async function(e) {
+            e.preventDefault(); // Prevent default form submission
+
+            // Collect form data
+            const formData = new FormData(form);
+            const data = {};
+            formData.forEach((value, key) => {
+                // Convert numbers where applicable
+                if (!isNaN(value) && value !== "") {
+                    data[key] = parseFloat(value);
+                } else {
+                    data[key] = value;
+                }
+            });
+
+            try {
+                // Send POST request to Flask
+                const response = await fetch("/predict_model2", {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json"
+                    },
+                    body: JSON.stringify(data)
+                });
+
+                const result = await response.json();
+
+                if (result.error) {
+                    alert("Error: " + result.error);
+                } else {
+                    // Display predictions
+                    alert(
+                        `Predicted Product: ${result.predicted_product}\n` +
+                        `Predicted HHV: ${result.predicted_hhv.toFixed(2)} MJ/kg`
+                    );
+                }
+            } catch (err) {
+                console.error(err);
+                alert("An unexpected error occurred. Check console for details.");
+            }
+        });
+        });
+
+    </script>
 </body>
 </html>
 
