@@ -74,56 +74,64 @@
                     <form class="model-form" id="model1-form" action="#" method="post" novalidate>
                         <div class="form-grid">
                             <div class="form-group">
+                                <label for="origin">Origin</label>
+                                <input type="text" id="origin" name="Origin" placeholder="e.g., Mumbai" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="destination">Destination</label>
+                                <input type="text" id="destination" name="Destination" placeholder="e.g., Delhi" required>
+                            </div>
+                            <div class="form-group">
                                 <label for="originLat">Origin_Lat</label>
-                                <input type="number" id="originLat" name="originLat" placeholder="e.g., 19.0760" step="0.000001" required>
+                                <input type="number" id="originLat" name="Origin_Lat" placeholder="e.g., 19.0760" step="0.000001" required>
                             </div>
                             <div class="form-group">
                                 <label for="originLon">Origin_Lon</label>
-                                <input type="number" id="originLon" name="originLon" placeholder="e.g., 72.8777" step="0.000001" required>
+                                <input type="number" id="originLon" name="Origin_Lon" placeholder="e.g., 72.8777" step="0.000001" required>
                             </div>
                             <div class="form-group">
                                 <label for="destLat">Dest_Lat</label>
-                                <input type="number" id="destLat" name="destLat" placeholder="e.g., 28.7041" step="0.000001" required>
+                                <input type="number" id="destLat" name="Dest_Lat" placeholder="e.g., 28.7041" step="0.000001" required>
                             </div>
                             <div class="form-group">
                                 <label for="destLon">Dest_Lon</label>
-                                <input type="number" id="destLon" name="destLon" placeholder="e.g., 77.1025" step="0.000001" required>
+                                <input type="number" id="destLon" name="Dest_Lon" placeholder="e.g., 77.1025" step="0.000001" required>
                             </div>
                             <div class="form-group">
                                 <label for="distanceKm">Distance_km</label>
-                                <input type="number" id="distanceKm" name="distanceKm" placeholder="e.g., 1420" step="0.01" min="0" required>
+                                <input type="number" id="distanceKm" name="Distance_km" placeholder="e.g., 1420" step="0.01" min="0" required>
                             </div>
                             <div class="form-group">
                                 <label for="fuelPrice">Fuel_Price_per_unit_INR</label>
-                                <input type="number" id="fuelPrice" name="fuelPrice" placeholder="e.g., 96.5" step="0.01" min="0" required>
+                                <input type="number" id="fuelPrice" name="Fuel_Price_per_unit_INR" placeholder="e.g., 96.5" step="0.01" min="0" required>
                             </div>
                             <div class="form-group">
                                 <label for="fuelConsumption">Fuel_Consumption_per_100km</label>
-                                <input type="number" id="fuelConsumption" name="fuelConsumption" placeholder="e.g., 28" step="0.01" min="0" required>
+                                <input type="number" id="fuelConsumption" name="Fuel_Consumption_per_100km" placeholder="e.g., 28" step="0.01" min="0" required>
                             </div>
                             <div class="form-group">
                                 <label for="fuelCost">Fuel_Cost_INR</label>
-                                <input type="number" id="fuelCost" name="fuelCost" placeholder="e.g., 38500" step="0.01" min="0" required>
+                                <input type="number" id="fuelCost" name="Fuel_Cost_INR" placeholder="e.g., 38500" step="0.01" min="0" required>
                             </div>
                             <div class="form-group">
                                 <label for="otherCosts">Other_Costs_INR</label>
-                                <input type="number" id="otherCosts" name="otherCosts" placeholder="e.g., 5000" step="0.01" min="0" required>
+                                <input type="number" id="otherCosts" name="Other_Costs_INR" placeholder="e.g., 5000" step="0.01" min="0" required>
                             </div>
                             <div class="form-group">
                                 <label for="handlingFee">Handling_Fee_INR</label>
-                                <input type="number" id="handlingFee" name="handlingFee" placeholder="e.g., 2000" step="0.01" min="0" required>
+                                <input type="number" id="handlingFee" name="Handling_Fee_INR" placeholder="e.g., 2000" step="0.01" min="0" required>
                             </div>
                             <div class="form-group">
                                 <label for="totalPrice">Total_Price_INR</label>
-                                <input type="number" id="totalPrice" name="totalPrice" placeholder="e.g., 45500" step="0.01" min="0" required>
+                                <input type="number" id="totalPrice" name="Total_Price_INR" placeholder="e.g., 45500" step="0.01" min="0" required>
                             </div>
                             <div class="form-group">
                                 <label for="vehicleType">Vehicle_Type_encoded</label>
-                                <input type="number" id="vehicleType" name="vehicleType" placeholder="e.g., 1" step="1" min="0" required>
+                                <input type="number" id="vehicleType" name="Vehicle_Type" placeholder="e.g., 1" step="1" min="0" required>
                             </div>
                             <div class="form-group">
                                 <label for="fuelType">Fuel_Type_encoded</label>
-                                <input type="number" id="fuelType" name="fuelType" placeholder="e.g., 0" step="1" min="0" required>
+                                <input type="number" id="fuelType" name="Fuel_Type" placeholder="e.g., 0" step="1" min="0" required>
                             </div>
                         </div>
                         <div class="form-actions">
@@ -149,9 +157,23 @@
             e.preventDefault();
             const formData = new FormData(e.target);
             const data = Object.fromEntries(formData.entries());
-            for (let key in data) data[key] = parseFloat(data[key]);
+            // for (let key in data) data[key] = parseFloat(data[key]);
+            // Convert only numeric fields to float
+            const numericFields = [
+                "Origin_Lat", "Origin_Lon", "Dest_Lat", "Dest_Lon", 
+                "Distance_km", "Fuel_Price_per_unit_INR", "Fuel_Consumption_per_100km",
+                "Fuel_Cost_INR", "Other_Costs_INR", "Handling_Fee_INR", "Total_Price_INR",
+                "Vehicle_Type", "Fuel_Type"
+            ];
+            // categorical fields
+            data["Vehicle_Type"] = "Small Truck"; // example: must match model training strings
+            data["Fuel_Type"] = "diesel";
+
+            for (let key of numericFields) {
+                if (data[key] !== undefined) data[key] = parseFloat(data[key]);
+            }
     
-            const res = await fetch("/predict", {
+            const res = await fetch("/predict_model1", {
                 method: "POST",
                 headers: {"Content-Type": "application/json"},
                 body: JSON.stringify(data)
