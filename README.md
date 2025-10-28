@@ -24,8 +24,7 @@ It provides an intuitive frontend for users and a powerful Flask-based backend f
 | Backend | Python (Flask) |
 | ML Libraries | Scikit-learn / TensorFlow / NumPy / Pandas |
 | Model Serialization | Joblib / Pickle |
-| Deployment | Render / Gunicorn |
-| Visualization | Matplotlib / Plotly (if used) |
+| Visualization | Matplotlib |
 
 ---
 
@@ -36,11 +35,11 @@ BiomassOpt/
 ├── backend/ # Flask backend
 │ ├── app.py # Main Flask entrypoint
 │ ├── models/ # Stored ML models (.pkl / .h5)
+│
+├── frontend/ # Frontend source 
 │ ├── static/ # Static files (CSS, JS)
 │ └── templates/ # HTML templates
-│
-├── frontend/ # Frontend source (if separate)
-│
+|  
 ├── notebooks/ # Jupyter notebooks for model training
 │
 ├── data/ # Sample datasets
